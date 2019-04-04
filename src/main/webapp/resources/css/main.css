@@ -1,26 +1,4 @@
 /*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-@font-face {
-	font-family: Poppins-Regular;
-	src: url('../fonts/poppins/Poppins-Regular.ttf');
-}
-
-@font-face {
-	font-family: Poppins-Bold;
-	src: url('../fonts/poppins/Poppins-Bold.ttf');
-}
-
-@font-face {
-	font-family: Poppins-Medium;
-	src: url('../fonts/poppins/Poppins-Medium.ttf');
-}
-
-@font-face {
-	font-family: Montserrat-Bold;
-	src: url('../fonts/montserrat/Montserrat-Bold.ttf');
-}
-
-/*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 * {
 	margin: 0px;
@@ -203,10 +181,10 @@ iframe {
 	align-items: center;
 	padding: 15px;
 	background: #9053c7;
-	background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-	background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-	background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-	background: linear-gradient(-135deg, #5052c8, #41d0c6);
+	background: -webkit-linear-gradient(-135deg, #000, #0079ff);
+	background: -o-linear-gradient(-135deg, #000, #0079ff);
+	background: -moz-linear-gradient(-135deg, #000, #0079ff);
+	background: linear-gradient(-135deg, #000, #0079ff);
 }
 
 .wrap-login100 {
@@ -382,7 +360,7 @@ keyframes anim-shadow {to { box-shadow:0px0px70px25px;
 [ Responsive ]*/
 @media ( max-width : 992px) {
 	.wrap-login100 {
-		padding: 177px 90px 33px 85px;
+		padding: 5%;
 	}
 	.login100-pic {
 		width: 35%;
@@ -394,7 +372,7 @@ keyframes anim-shadow {to { box-shadow:0px0px70px25px;
 
 @media ( max-width : 768px) {
 	.wrap-login100 {
-		padding: 100px 80px 33px 80px;
+		padding: 5%;
 	}
 	.login100-pic {
 		display: none;
@@ -406,7 +384,7 @@ keyframes anim-shadow {to { box-shadow:0px0px70px25px;
 
 @media ( max-width : 576px) {
 	.wrap-login100 {
-		padding: 100px 15px 33px 15px;
+		padding: 5%;
 	}
 }
 
