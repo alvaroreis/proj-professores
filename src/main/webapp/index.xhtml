@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Professores Login</title>
+
+
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1" />
+
+	<link
+		rel="icon"
+		type="image/png"
+		href="images/icons/favicon.ico" />
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="vendor/bootstrap/css/bootstrap.min.css" />
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="vendor/animate/animate.css" />
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="vendor/css-hamburgers/hamburgers.min.css" />
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="vendor/select2/select2.min.css" />
+
+	<h:outputStylesheet
+		library="css"
+		name="util.css" />
+	<h:outputStylesheet
+		library="css"
+		name="main.css" />
+	<h:outputStylesheet
+		library="css"
+		name="animate.css" />
+
+</h:head>
+<h:body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt">
+					<p:graphicImage
+						library="image"
+						name="login.png" />
+				</div>
+
+				<form
+					class="login100-form validate-form"
+					id="formLogin"
+					action="#{request.contextPath}/j_spring_security_check"
+					method="post">
+					<span class="login100-form-title"> Área para Membros </span>
+
+					<div class="wrap-input100 validate-input">
+
+						<div class="ui-g-12">
+							<p:inputText
+								style="padding: 7%;"
+								styleClass="input100"
+								id="j_username"
+								placeholder="Email ou Celular"
+								required="true" />
+						</div>
+
+
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<div class="ui-g-12">
+							<p:password
+								style="padding: 7%;"
+								id="j_password"
+								styleClass="input100"
+								placeholder="Senha"
+								required="true"
+								feedback="false" />
+							<h:outputText
+								value="Celular, e-mail ou senha inválidos."
+								rendered="#{param.get('e') != null}"
+								style="color: red; font-size:12px; " />
+						</div>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<p:commandButton
+							styleClass="login100-form-btn"
+							onclick="#{request.contextPath} / j_spring_security_check;"
+							value="Acessar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<h:outputScript
+		library="js"
+		name="tilt.jquery.min.js" />
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+</h:body>
+</html>
+

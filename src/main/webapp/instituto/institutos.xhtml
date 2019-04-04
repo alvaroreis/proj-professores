@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	template="/WEB-INF/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="title">
+        Listagem de Institutos
+    </ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="formConteudo">
+			<div class="p-fluid">
+				<p:growl
+					showDetail="true"
+					showSummary="true" />
+
+				<h1>Institutos</h1>
+
+				<p:commandButton
+					value="Novo"
+					process="@this"
+					update="@form"
+					action="#{institutoBean.preparar()}"
+					oncomplete="PF('acaoDialog').show();" />
+
+				<p:button
+					outcome="/professor/professores.xhtml"
+					value="Lista de Professores" />
+
+				<br /> <br />
+
+				<p:dataTable
+					reflow="true"
+					value="#{institutoBean.institutos }"
+					var="i"
+					emptyMessage="Nenhum registro.">
+
+					<p:column headerText="id" priority="4">
+						<h:outputText value="#{i.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{i.nome}" />
+					</p:column>
+
+
+					<p:column headerText="Sigla">
+						<h:outputText value="#{i.sigla}" />
+					</p:column>
+
+					<p:column headerText="Operações">
+						<p:commandButton
+							icon="fa fa-pencil-square"
+							title="Editar"
+							process="@this"
+							update="@form"
+							oncomplete="PF('acaoDialog').show();">
+							<f:setPropertyActionListener
+								target="#{institutoBean.instituto}"
+								value="#{i}" />
+						</p:commandButton>
+
+						<p:commandButton
+							disabled="#{not usuarioBean.isAdministrador() }"
+							icon="fa fa-trash"
+							title="Excluir"
+							process="@this"
+							update="@form"
+							action="#{institutoBean.excluir()}">
+							<f:setPropertyActionListener
+								target="#{institutoBean.instituto}"
+								value="#{i}" />
+							<p:confirm
+								header="Confirmação"
+								message="Você tem certeza que deseja excluir o instituto ?"
+								icon="fa fa-exclamation-triangle" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<p:dialog widgetVar="acaoDialog">
+
+					<h:panelGrid
+						id="painel"
+						columns="2">
+
+						<p:outputLabel value="* Nome" />
+						<p:inputText value="#{institutoBean.instituto.nome}" />
+
+						<p:outputLabel value="* Sigla" />
+						<p:inputText value="#{institutoBean.instituto.sigla}" />
+
+					</h:panelGrid>
+
+					<p:commandButton
+						action="#{institutoBean.salvar() }"
+						onsuccess="PF('acaoDialog').hide();"
+						update="@form"
+						value="Salvar" />
+					<p:commandButton
+						action="#{institutoBean.preparar() }"
+						oncomplete="PF('acaoDialog').hide();"
+						update="@form"
+						value="Cancelar" />
+
+				</p:dialog>
+
+				<p:confirmDialog
+					global="true"
+					showEffect="fade"
+					hideEffect="fade">
+					<p:commandButton
+						value="Não"
+						type="button"
+						styleClass="ui-confirmdialog-no"
+						icon="fa fa-times" />
+					<p:commandButton
+						value="Sim"
+						type="button"
+						styleClass="ui-confirmdialog-yes"
+						icon="fa fa-check" />
+				</p:confirmDialog>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
